@@ -9,7 +9,11 @@ export default defineConfig({
         entry: resolve(__dirname, 'src/main/index.ts'),
         formats: ['es']
       },
-      // target: 'node*'
+      rollupOptions: {
+        output: {
+          format: 'es'
+        }
+      },
     },
     plugins: [externalizeDepsPlugin()]
   },
@@ -19,14 +23,15 @@ export default defineConfig({
         entry: resolve(__dirname, 'src/preload/index.ts'),
         formats: ['es']
       },
-      // target: 'node*'
+      rollupOptions: {
+        output: {
+          format: 'es'
+        }
+      }
     },
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
-    // build: {
-    //   target: 'chrome*'
-    // },
     resolve: {
       alias: {
         '@renderer': resolve('src/renderer/src')

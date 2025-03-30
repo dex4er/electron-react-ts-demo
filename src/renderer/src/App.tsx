@@ -1,8 +1,27 @@
 import Versions from './components/Versions'
 import electronLogo from './assets/electron.svg'
 
+import { useEffect, useState } from 'react'
+
 function App(): JSX.Element {
   const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+
+  const fs = window.api.fs
+  const fileContent = fs.readFileSync('/etc/hosts', 'utf-8')
+
+  const [httpContent, setHttpContent] = useState('')
+
+  useEffect(() => {
+    const fetch = window.api.fetch
+    fetch('https://ifconfig.me/ip')
+      .then((response) => {
+        console.log(response)
+        return response.text()
+      })
+      .then((text) => {
+        setHttpContent(text)
+      })
+  })
 
   return (
     <>
@@ -28,6 +47,8 @@ function App(): JSX.Element {
         </div>
       </div>
       <Versions></Versions>
+      <div>File content: {fileContent}</div>
+      <div>HTTP content: {httpContent}</div>
     </>
   )
 }
