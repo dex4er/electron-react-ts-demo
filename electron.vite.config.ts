@@ -14,6 +14,7 @@ export default defineConfig({
           format: 'es'
         }
       },
+      sourcemap: true,
     },
     plugins: [externalizeDepsPlugin()]
   },
@@ -27,11 +28,15 @@ export default defineConfig({
         output: {
           format: 'es'
         }
-      }
+      },
+      sourcemap: true,
     },
     plugins: [externalizeDepsPlugin()]
   },
   renderer: {
+    build: {
+      sourcemap: true,
+    },
     resolve: {
       alias: {
         '@renderer': resolve('src/renderer/src')
