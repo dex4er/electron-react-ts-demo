@@ -1,27 +1,27 @@
-import Versions from './components/Versions'
-import electronLogo from './assets/electron.svg'
+import electronLogo from "./assets/electron.svg";
+import Versions from "./components/Versions";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 
 function App(): JSX.Element {
-  const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')
+  const ipcHandle = (): void => window.electron.ipcRenderer.send("ping");
 
-  const fs = window.api.fs
-  const fileContent = fs.readFileSync('/etc/hosts', 'utf-8')
+  const fs = window.api.fs;
+  const fileContent = fs.readFileSync("/etc/hosts", "utf-8");
 
-  const [httpContent, setHttpContent] = useState('')
+  const [httpContent, setHttpContent] = useState("");
 
   useEffect(() => {
-    const fetch = window.api.fetch
-    fetch('https://ifconfig.me/ip')
+    const fetch = window.api.fetch;
+    fetch("https://ifconfig.me/ip")
       .then((response) => {
-        console.log(response)
-        return response.text()
+        console.log(response);
+        return response.text();
       })
       .then((text) => {
-        setHttpContent(text)
-      })
-  })
+        setHttpContent(text);
+      });
+  });
 
   return (
     <>
@@ -46,11 +46,11 @@ function App(): JSX.Element {
           </a>
         </div>
       </div>
-      <Versions></Versions>
+      <Versions />
       <div>File content: {fileContent}</div>
       <div>HTTP content: {httpContent}</div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

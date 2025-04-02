@@ -1,15 +1,15 @@
-import { ElectronAPI } from '@electron-toolkit/preload'
+import type { ElectronAPI } from "@electron-toolkit/preload";
 
-import fetch from 'node-fetch'
+import type fetch from "node-fetch";
 
 declare global {
   interface Window {
-    electron: ElectronAPI
+    electron: ElectronAPI;
     api: {
-      fetch: typeof fetch
+      fetch: typeof fetch;
       fs: {
-        readFileSync: typeof import('node:fs').readFileSync
-      }
-    }
+        readFileSync: typeof import("node:fs").readFileSync;
+      };
+    };
   }
 }
