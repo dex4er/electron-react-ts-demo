@@ -3,6 +3,7 @@ import { contextBridge } from "electron";
 
 import fs from "node:fs";
 import nodeFetch from "node-fetch";
+import { temporaryFile } from "tempy";
 
 // Simple wrapper for `node-fetch` to use in the renderer
 async function fetch(url: string, options?: object): Promise<Response> {
@@ -18,6 +19,7 @@ const api = {
   fs: {
     readFileSync: fs.readFileSync,
   },
+  temporaryFile,
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to

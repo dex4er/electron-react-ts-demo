@@ -27,7 +27,9 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
-    "node-fetch": "^3.3.2"
+    "ansi_up": "^6.0.2",
+    "node-fetch": "^3.3.2",
+    "tempy": "^3.1.0"
   },
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^1.0.1",
