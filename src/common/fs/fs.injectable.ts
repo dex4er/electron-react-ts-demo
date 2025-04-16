@@ -8,7 +8,7 @@ const fsApi: FsApi = {
   readFileSync: fs.readFileSync,
 };
 
-export default getInjectable({
+export const fsInjectable = getInjectable({
   id: "fs",
   instantiate: () => fsApi,
   injectionToken: fsToken,

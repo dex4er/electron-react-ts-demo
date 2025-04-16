@@ -2,10 +2,9 @@
   "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
   "include": [
     "electron.vite.config.*",
-    "src/di/**/*",
     "src/main/**/*",
     "src/preload/**/*",
-    "src/di/fs.injectable.ts"
+    "src/common/**/*"
   ],
   "compilerOptions": {
     "composite": true,

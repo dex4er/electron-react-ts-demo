@@ -19,6 +19,9 @@
         "noUselessTernary": "off",
         // To strict especially for environment variables
         "useLiteralKeys": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off"
       }
     }
   },

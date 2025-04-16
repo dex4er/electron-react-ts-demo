@@ -6,7 +6,6 @@ import modify from "rollup-plugin-modify";
 function importViaDefaultExportPlugin() {
   const modules = ["@ogre-tools/injectable"];
   const modulesPattern = modules.join("|").replaceAll("/", "\\/");
-  console.log(modulesPattern);
   const findRegexp = new RegExp(`import (\{.*\}) from "(${modulesPattern})"`);
 
   return modify({

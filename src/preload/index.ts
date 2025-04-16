@@ -1,8 +1,8 @@
 import { electronAPI } from "@electron-toolkit/preload";
 import { contextBridge } from "electron";
 
-import { di } from "../di/di.register";
-import { fsToken } from "../di/fs.token";
+import { di } from "../common/di/di.register";
+import { fsToken } from "../common/fs/fs.token";
 
 // Custom APIs for renderer
 const api = {
