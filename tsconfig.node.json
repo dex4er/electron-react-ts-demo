@@ -1,8 +1,15 @@
 {
   "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
-  "include": ["electron.vite.config.*", "src/main/**/*", "src/preload/**/*"],
+  "include": [
+    "electron.vite.config.*",
+    "src/di/**/*",
+    "src/main/**/*",
+    "src/preload/**/*",
+    "src/di/fs.injectable.ts"
+  ],
   "compilerOptions": {
     "composite": true,
+    "resolveJsonModule": false,
     "types": ["electron-vite/node"]
   }
 }

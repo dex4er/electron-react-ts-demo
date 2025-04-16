@@ -1,6 +1,23 @@
 import { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig, externalizeDepsPlugin } from "electron-vite";
+import modify from "rollup-plugin-modify";
+
+function importViaDefaultExportPlugin() {
+  const modules = ["@ogre-tools/injectable"];
+  const modulesPattern = modules.join("|").replaceAll("/", "\\/");
+  console.log(modulesPattern);
+  const findRegexp = new RegExp(`import (\{.*\}) from "(${modulesPattern})"`);
+
+  return modify({
+    find: findRegexp,
+    replace: (_match, members, module) => {
+      const sanitizedModuleName = module.replace(/\W/g, "__");
+      const moduleSymbol = `__default_import_${sanitizedModuleName}`;
+      return `import ${moduleSymbol} from "${module}"; const ${members} = ${moduleSymbol};`;
+    },
+  });
+}
 
 export default defineConfig({
   main: {
@@ -26,12 +43,14 @@ export default defineConfig({
       },
       rollupOptions: {
         output: {
+          interop: "auto",
+          preserveModules: true,
           format: "es",
         },
       },
       sourcemap: true,
     },
-    plugins: [externalizeDepsPlugin()],
+    plugins: [externalizeDepsPlugin(), importViaDefaultExportPlugin()],
   },
   renderer: {
     build: {

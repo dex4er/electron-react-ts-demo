@@ -1,6 +1,7 @@
 {
   "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
   "include": [
+    "src/di/**/*",
     "src/renderer/src/env.d.ts",
     "src/renderer/src/**/*",
     "src/renderer/src/**/*.tsx",
@@ -8,6 +9,7 @@
   ],
   "compilerOptions": {
     "composite": true,
+    "resolveJsonModule": false,
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {

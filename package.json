@@ -17,7 +17,8 @@
     "typecheck": "pnpm typecheck:node && pnpm typecheck:web",
     "start": "electron-vite preview",
     "dev": "electron-vite dev",
-    "build": "pnpm typecheck && electron-vite build",
+    "_prebuild": "pnpm typecheck",
+    "build": "electron-vite build",
     "postinstall": "electron-builder install-app-deps",
     "build:unpack": "pnpm build && electron-builder --dir",
     "build:win": "pnpm build && electron-builder --win",
@@ -27,12 +28,14 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^4.0.0",
+    "@ogre-tools/injectable": "^17.11.1",
     "ansi_up": "^6.0.2",
     "node-fetch": "^3.3.2",
     "tempy": "^3.1.0"
   },
   "devDependencies": {
     "@electron-toolkit/tsconfig": "^1.0.1",
+    "@rollup/plugin-replace": "^6.0.2",
     "@types/node": "^22.13.13",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
@@ -42,7 +45,11 @@
     "electron-vite": "^3.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "rollup-plugin-import-manager": "^0.6.4",
+    "rollup-plugin-modify": "^3.0.0",
     "typescript": "^5.8.2",
-    "vite": "^6.2.3"
-  }
+    "vite": "^6.2.3",
+    "vite-plugin-top-level-await": "^1.5.0"
+  },
+  "packageManager": "pnpm@10.8.1+sha512.c50088ba998c67b8ca8c99df8a5e02fd2ae2e2b29aaf238feaa9e124248d3f48f9fb6db2424949ff901cffbb5e0f0cc1ad6aedb602cd29450751d11c35023677"
 }
